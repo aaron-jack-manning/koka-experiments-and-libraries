@@ -1,0 +1,127 @@
+module interface bitmap
+ 
+//------------------------------
+//#kki: import declarations
+ 
+private import std/core/types = std/core/types = "";
+private import std/core/hnd = std/core/hnd = "";
+private import std/core = std/core = "";
+ 
+//------------------------------
+//#kki: external imports
+ 
+ 
+//------------------------------
+//#kki: fixity declarations
+ 
+ 
+//------------------------------
+//#kki: local imported aliases
+ 
+// An alias for pure effects: a pure function always returns the same result
+// when called with the same arguments but may not terminate or raise an exception.
+local alias std/core/pure :: E = <(std/core/types/handled :: HX -> X)<(std/core/exn :: HX)>,(std/core/types/div :: X)> = 1;
+ 
+//------------------------------
+//#kki: type declarations
+ 
+public value{0,3} type colour {
+  public con Colour(red: std/core/types/int, green: std/core/types/int, blue: std/core/types/int) : (red : std/core/types/int, green : std/core/types/int, blue : std/core/types/int) -> colour;
+};
+ 
+//------------------------------
+//#kki: declarations
+ 
+// Automatically generated. Retrieves the `red` constructor field of the `:colour` type.
+public fun red : (^ colour : colour) -> std/core/types/int;
+// Automatically generated. Retrieves the `green` constructor field of the `:colour` type.
+public fun green : (^ colour : colour) -> std/core/types/int;
+// Automatically generated. Retrieves the `blue` constructor field of the `:colour` type.
+public fun blue : (^ colour : colour) -> std/core/types/int;
+public fun .copy : (.this : colour, red : (std/core/types/optional :: V -> V)<std/core/types/int>, green : (std/core/types/optional :: V -> V)<std/core/types/int>, blue : (std/core/types/optional :: V -> V)<std/core/types/int>) -> colour;
+// lifted
+private fun .lift1237-bytes : (current : std/core/types/int, base : std/core/types/int) -> <(std/core/types/div :: E)> (std/core/list :: V -> V)<std/core/types/int>;
+public fun bytes : (number : std/core/types/int) -> <(std/core/types/div :: X)> (std/core/list :: V -> V)<std/core/types/int>;
+public fun colour-to-bytes : (colour : colour) -> (std/core/types/vector :: V -> V)<std/core/types/int>;
+// monadic lift
+private fun .mlift1265-get-dib-header : forall<(h :: H)> (dib-header : (std/core/types/local-var :: (H, V) -> V)<(h :: H),(std/core/types/vector :: V -> V)<std/core/types/int>>, i : std/core/types/int, print-resolution-bytes : (std/core/list :: V -> V)<std/core/types/int>, wild_4 : ()) -> <(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/handled :: HX -> X)<(std/core/exn :: HX)>,(std/core/types/div :: X)> ();
+// monadic lift
+private fun .mlift1266-get-dib-header : forall<(h :: H)> (dib-header : (std/core/types/local-var :: (H, V) -> V)<(h :: H),(std/core/types/vector :: V -> V)<std/core/types/int>>, i : std/core/types/int, print-resolution-bytes : (std/core/list :: V -> V)<std/core/types/int>, wild_3 : ()) -> <(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/handled :: HX -> X)<(std/core/exn :: HX)>,(std/core/types/div :: X)> ();
+// monadic lift
+private fun .mlift1267-get-dib-header : forall<(h :: H)> (dib-header : (std/core/types/local-var :: (H, V) -> V)<(h :: H),(std/core/types/vector :: V -> V)<std/core/types/int>>, i : std/core/types/int, print-resolution-bytes : (std/core/list :: V -> V)<std/core/types/int>, vertical-resolution-bytes : (std/core/list :: V -> V)<std/core/types/int>, wild_2 : ()) -> <(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/handled :: HX -> X)<(std/core/exn :: HX)>,(std/core/types/div :: X)> ();
+// monadic lift
+private fun .mlift1268-get-dib-header : forall<(h :: H)> (dib-header : (std/core/types/local-var :: (H, V) -> V)<(h :: H),(std/core/types/vector :: V -> V)<std/core/types/int>>, wild_5 : ()) -> <(std/core/types/handled :: HX -> X)<(std/core/exn :: HX)>,(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/div :: X)> (std/core/types/vector :: V -> V)<std/core/types/int>;
+// monadic lift
+private fun .mlift1269-get-dib-header : forall<(h :: H)> (dib-header : (std/core/types/local-var :: (H, V) -> V)<(h :: H),(std/core/types/vector :: V -> V)<std/core/types/int>>, dpcm : std/core/types/int, horizontal-resolution : std/core/types/int, vertical-resolution : std/core/types/int, wild_1 : ()) -> <(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/handled :: HX -> X)<(std/core/exn :: HX)>,(std/core/types/div :: X)> (std/core/types/vector :: V -> V)<std/core/types/int>;
+// monadic lift
+private fun .mlift1270-get-dib-header : forall<(h :: H)> (dib-header : (std/core/types/local-var :: (H, V) -> V)<(h :: H),(std/core/types/vector :: V -> V)<std/core/types/int>>, dpcm : std/core/types/int, horizontal-resolution : std/core/types/int, vertical-resolution : std/core/types/int, wild_0 : ()) -> <(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/handled :: HX -> X)<(std/core/exn :: HX)>,(std/core/types/div :: X)> (std/core/types/vector :: V -> V)<std/core/types/int>;
+// monadic lift
+private fun .mlift1271-get-dib-header : forall<(h :: H)> (dib-header : (std/core/types/local-var :: (H, V) -> V)<(h :: H),(std/core/types/vector :: V -> V)<std/core/types/int>>, dpcm : std/core/types/int, horizontal-resolution : std/core/types/int, vertical-resolution : std/core/types/int, wild_ : ()) -> <(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/handled :: HX -> X)<(std/core/exn :: HX)>,(std/core/types/div :: X)> (std/core/types/vector :: V -> V)<std/core/types/int>;
+public fun get-dib-header : (horizontal-resolution : std/core/types/int, vertical-resolution : std/core/types/int, dpcm : std/core/types/int) -> <(std/core/pure :: E)> (std/core/types/vector :: V -> V)<std/core/types/int>;
+// monadic lift
+private fun .mlift1272-get-header : forall<(h :: H)> (header : (std/core/types/local-var :: (H, V) -> V)<(h :: H),(std/core/types/vector :: V -> V)<std/core/types/int>>, wild_2 : ()) -> <(std/core/types/handled :: HX -> X)<(std/core/exn :: HX)>,(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/div :: X)> (std/core/types/vector :: V -> V)<std/core/types/int>;
+// monadic lift
+private fun .mlift1273-get-header : forall<(h :: H)> (file-size : std/core/types/int, header : (std/core/types/local-var :: (H, V) -> V)<(h :: H),(std/core/types/vector :: V -> V)<std/core/types/int>>, wild_1 : ()) -> <(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/handled :: HX -> X)<(std/core/exn :: HX)>,(std/core/types/div :: X)> (std/core/types/vector :: V -> V)<std/core/types/int>;
+// monadic lift
+private fun .mlift1274-get-header : forall<(h :: H)> (file-size : std/core/types/int, header : (std/core/types/local-var :: (H, V) -> V)<(h :: H),(std/core/types/vector :: V -> V)<std/core/types/int>>, wild_0 : ()) -> <(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/handled :: HX -> X)<(std/core/exn :: HX)>,(std/core/types/div :: X)> (std/core/types/vector :: V -> V)<std/core/types/int>;
+// monadic lift
+private fun .mlift1275-get-header : forall<(h :: H)> (file-size : std/core/types/int, header : (std/core/types/local-var :: (H, V) -> V)<(h :: H),(std/core/types/vector :: V -> V)<std/core/types/int>>, wild_ : ()) -> <(std/core/types/local :: H -> X)<(h :: H)>,(std/core/types/handled :: HX -> X)<(std/core/exn :: HX)>,(std/core/types/div :: X)> (std/core/types/vector :: V -> V)<std/core/types/int>;
+public fun get-header : (file-size : std/core/types/int) -> <(std/core/pure :: E)> (std/core/types/vector :: V -> V)<std/core/types/int>;
+ 
+//------------------------------
+//#kki: external declarations
+ 
+ 
+//------------------------------
+//#kki: inline definitions
+ 
+//.inline-section
+inline fun red // inline size: 0
+  = fn(colour: colour){
+    match (colour) {
+      ((.skip bitmap/Colour((.x: std/core/types/int) : std/core/types/int, (.pat0: std/core/types/int) : std/core/types/int, (.pat1: std/core/types/int) : std/core/types/int) : colour ) as .pat: colour)
+         -> .x;
+    };
+  };
+inline fun green // inline size: 0
+  = fn(colour: colour){
+    match (colour) {
+      ((.skip bitmap/Colour((.pat0: std/core/types/int) : std/core/types/int, (.x: std/core/types/int) : std/core/types/int, (.pat1: std/core/types/int) : std/core/types/int) : colour ) as .pat: colour)
+         -> .x;
+    };
+  };
+inline fun blue // inline size: 0
+  = fn(colour: colour){
+    match (colour) {
+      ((.skip bitmap/Colour((.pat0: std/core/types/int) : std/core/types/int, (.pat1: std/core/types/int) : std/core/types/int, (.x: std/core/types/int) : std/core/types/int) : colour ) as .pat: colour)
+         -> .x;
+    };
+  };
+fun .copy // inline size: 4
+  = fn(.this: colour, red0: (std/core/types/optional :: V -> V)<std/core/types/int>, green0: (std/core/types/optional :: V -> V)<std/core/types/int>, blue0: (std/core/types/optional :: V -> V)<std/core/types/int>){
+    bitmap/Colour((match (red0) {
+        ((std/core/types/Optional((.red.52: std/core/types/int) : std/core/types/int) : (std/core/types/optional :: V -> V)<std/core/types/int> ) as .pat: ((std/core/types/optional :: V -> V)<std/core/types/int>))
+           -> .red.52;
+        ((.skip std/core/types/None() : (std/core/types/optional :: V -> V)<std/core/types/int> ) as .pat0: ((std/core/types/optional :: V -> V)<std/core/types/int>))
+           -> (match (.this) {
+            ((.skip bitmap/Colour((.x: std/core/types/int) : std/core/types/int, (.pat00: std/core/types/int) : std/core/types/int, (.pat10: std/core/types/int) : std/core/types/int) : colour ) as .pat1: colour)
+               -> .x;
+          });
+      }), (match (green0) {
+        ((std/core/types/Optional((.green.58: std/core/types/int) : std/core/types/int) : (std/core/types/optional :: V -> V)<std/core/types/int> ) as .pat11: ((std/core/types/optional :: V -> V)<std/core/types/int>))
+           -> .green.58;
+        ((.skip std/core/types/None() : (std/core/types/optional :: V -> V)<std/core/types/int> ) as .pat2: ((std/core/types/optional :: V -> V)<std/core/types/int>))
+           -> (match (.this) {
+            ((.skip bitmap/Colour((.pat01: std/core/types/int) : std/core/types/int, (.x0: std/core/types/int) : std/core/types/int, (.pat12: std/core/types/int) : std/core/types/int) : colour ) as .pat3: colour)
+               -> .x0;
+          });
+      }), (match (blue0) {
+        ((std/core/types/Optional((.blue.64: std/core/types/int) : std/core/types/int) : (std/core/types/optional :: V -> V)<std/core/types/int> ) as .pat30: ((std/core/types/optional :: V -> V)<std/core/types/int>))
+           -> .blue.64;
+        ((.skip std/core/types/None() : (std/core/types/optional :: V -> V)<std/core/types/int> ) as .pat4: ((std/core/types/optional :: V -> V)<std/core/types/int>))
+           -> (match (.this) {
+            ((.skip bitmap/Colour((.pat02: std/core/types/int) : std/core/types/int, (.pat13: std/core/types/int) : std/core/types/int, (.x1: std/core/types/int) : std/core/types/int) : colour ) as .pat5: colour)
+               -> .x1;
+          });
+      }));
+  };
