@@ -12,10 +12,10 @@
 
 static inline kk_unit_t kk_main_main(kk_context_t* _ctx) { /* () -> console () */ 
   kk_unit_t __ = kk_Unit;
-  kk_string_t _x30;
-  kk_define_string_literal(, _s31, 13, "Hello, World!")
-  _x30 = kk_string_dup(_s31); /*string*/
-  kk_std_core_printsln(_x30, _ctx);
+  kk_string_t _x39;
+  kk_define_string_literal(, _s40, 13, "Hello, World!")
+  _x39 = kk_string_dup(_s40); /*string*/
+  kk_std_core_printsln(_x39, _ctx);
   kk_Unit; return kk_Unit;
 }
 

@@ -25,7 +25,18 @@ private import std/core = std/core = "";
 //------------------------------
 //#kki: declarations
  
+// Display lists of primitives
 public fun println : (ls : (std/core/list :: V -> V)<std/core/types/int>) -> <(std/core/console :: X)> ();
+public fun println.1 : (ls : (std/core/list :: V -> V)<std/core/types/char>) -> <(std/core/console :: X)> ();
+public fun println.2 : (ls : (std/core/list :: V -> V)<std/core/types/bool>) -> <(std/core/console :: X)> ();
+public fun println.3 : (ls : (std/core/list :: V -> V)<std/core/types/double>) -> <(std/core/console :: X)> ();
+public fun println.4 : (ls : (std/core/list :: V -> V)<std/core/types/string>) -> <(std/core/console :: X)> ();
+// Display vectors of primitives
+public fun println.5 : (vec : (std/core/types/vector :: V -> V)<std/core/types/int>) -> <(std/core/console :: X)> ();
+public fun println.6 : (vec : (std/core/types/vector :: V -> V)<std/core/types/char>) -> <(std/core/console :: X)> ();
+public fun println.7 : (vec : (std/core/types/vector :: V -> V)<std/core/types/bool>) -> <(std/core/console :: X)> ();
+public fun println.8 : (vec : (std/core/types/vector :: V -> V)<std/core/types/double>) -> <(std/core/console :: X)> ();
+public fun println.9 : (vec : (std/core/types/vector :: V -> V)<std/core/types/string>) -> <(std/core/console :: X)> ();
  
 //------------------------------
 //#kki: external declarations
