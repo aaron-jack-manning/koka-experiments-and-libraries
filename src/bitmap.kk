@@ -25,14 +25,14 @@ fun get-header (file-size : int)
     header[0] := 66 // B
     header[1] := 77 // M
 
-    header[10] := 54 // Header Size
-
     val file-size-bytes = bytes (file-size)
 
-    for (0, 13,
+    for (0, 11,
         fn (i) {
             header[i + 2] := maybe(file-size-bytes[i], 0)
         })
+
+    header[10] := 54 // Header Size
 
     header
 
@@ -68,3 +68,74 @@ fun colour-to-bytes (colour : colour) : vector<int>
 
         return values
         })
+
+fun round-up-to-four (number : int) : int
+    if number % 4 == 0 then
+        number
+    else
+        number + 4 - (number % 4)
+
+fun get-bitmap-bytes (screen : vector<vector<colour>>) : <div,exn> vector<int> // this will ultimately return vector<int>
+
+    val horizontal-resolution = screen.length
+    val vertical-resolution = screen[0].length
+
+    val filesize = 54 + (vertical-resolution * round-up-to-four (horizontal-resolution))
+
+
+    val header = get-header (filesize)
+    val dib-header = get-dib-header (horizontal-resolution, vertical-resolution, 40)
+
+    val padding = horizontal-resolution % 4
+
+
+    val pixels-length = 3 * (horizontal-resolution * vertical-resolution) + (padding * vertical-resolution)
+
+    var pixels := vector (pixels-length, 0)
+
+
+    var pixels-index := 0
+
+    for (0, vertical-resolution - 1,
+        fn(i) {
+            for (0, horizontal-resolution - 1,
+                fn(j) {
+                    val colour = colour-to-bytes (screen[i][j])
+
+                    foreach (colour,
+                        fn(colour-value) {
+                            pixels[pixels-index] := colour-value
+                            pixels-index := pixels-index + 1
+                        })
+
+                })
+        
+            for (1, padding,
+                fn (padding-index) {
+                    pixels[pixels-index] := 0
+                    pixels-index := pixels-index + 1
+                })
+        
+        })
+
+
+    var final-bitmap := vector (header.length + dib-header.length + pixels.length, 0)
+
+
+    for (0, header.length - 1,
+        fn(i) {
+            final-bitmap[i] := header[i]
+        })
+
+    for (0, dib-header.length - 1,
+        fn(i) {
+            final-bitmap[header.length + i] := dib-header[i]
+        })
+
+    for (0, pixels.length - 1,
+        fn(i) {
+            final-bitmap[header.length + dib-header.length + i] := pixels[i]
+        })
+
+
+    final-bitmap

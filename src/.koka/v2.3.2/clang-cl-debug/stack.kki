@@ -1,0 +1,87 @@
+module interface stack
+ 
+//------------------------------
+//#kki: import declarations
+ 
+private import std/core/types = std/core/types = "";
+private import std/core = std/core = "";
+ 
+//------------------------------
+//#kki: external imports
+ 
+ 
+//------------------------------
+//#kki: fixity declarations
+ 
+ 
+//------------------------------
+//#kki: local imported aliases
+ 
+ 
+//------------------------------
+//#kki: type declarations
+ 
+public recursive type stack <a> :: V -> V {
+  public con Empty : forall<a> (stack :: V -> V)<a>;
+  public con Top(head: a, tail: (stack :: V -> V)<a>) : forall<a> (head : a, tail : (stack :: V -> V)<a>) -> (stack :: V -> V)<a>;
+};
+ 
+//------------------------------
+//#kki: declarations
+ 
+// Automatically generated. Tests for the `Empty` constructor of the `:stack` type.
+public fun is-empty : forall<a> (^ stack : (stack :: V -> V)<a>) -> std/core/types/bool;
+// Automatically generated. Tests for the `Top` constructor of the `:stack` type.
+public fun is-top : forall<a> (^ stack : (stack :: V -> V)<a>) -> std/core/types/bool;
+public fun peek : forall<a> (st : (stack :: V -> V)<a>) -> (std/core/types/maybe :: V -> V)<a>;
+public fun pop : forall<a> (st : (stack :: V -> V)<a>) -> ((std/core/types/maybe :: V -> V)<a>, (stack :: V -> V)<a>);
+public fun push : forall<a> (st : (stack :: V -> V)<a>, a : a) -> (stack :: V -> V)<a>;
+ 
+//------------------------------
+//#kki: external declarations
+ 
+ 
+//------------------------------
+//#kki: inline definitions
+ 
+//.inline-section
+inline fun is-empty // inline size: 1
+  = forall<a> fn(stack: (stack :: V -> V)<a>){
+    (match (stack) {
+      ((stack/Empty() : (stack :: V -> V)<a> ) as .pat: ((stack :: V -> V)<a>))
+         -> std/core/types/True;
+      (.pat0: ((stack :: V -> V)<a>))
+         -> std/core/types/False;
+    });
+  };
+inline fun is-top // inline size: 1
+  = forall<a> fn(stack: (stack :: V -> V)<a>){
+    (match (stack) {
+      ((stack/Top((.pat0: a) : a, (.pat1: (stack :: V -> V)<a>) : (stack :: V -> V)<a>) : (stack :: V -> V)<a> ) as .pat: ((stack :: V -> V)<a>))
+         -> std/core/types/True;
+      ((.skip stack/Empty() : (stack :: V -> V)<a> ) as .pat2: ((stack :: V -> V)<a>))
+         -> std/core/types/False;
+    });
+  };
+fun peek // inline size: 2
+  = forall<a> fn(st: (stack :: V -> V)<a>){
+    (match (st) {
+      ((stack/Empty() : (stack :: V -> V)<a> ) as .pat: ((stack :: V -> V)<a>))
+         -> std/core/types/Nothing<a>;
+      ((.skip stack/Top((x: a) : a, (.pat1: (stack :: V -> V)<a>) : (stack :: V -> V)<a>) : (stack :: V -> V)<a> ) as .pat0: ((stack :: V -> V)<a>))
+         -> std/core/types/Just<a>(x);
+    });
+  };
+fun pop // inline size: 4
+  = forall<a> fn(st: (stack :: V -> V)<a>){
+    (match (st) {
+      ((stack/Empty() : (stack :: V -> V)<a> ) as .pat: ((stack :: V -> V)<a>))
+         -> std/core/types/(,)<(std/core/types/maybe :: V -> V)<a>,(stack :: V -> V)<a>>((std/core/types/Nothing<a>), (stack/Empty<a>));
+      ((.skip stack/Top((x: a) : a, (xs: (stack :: V -> V)<a>) : (stack :: V -> V)<a>) : (stack :: V -> V)<a> ) as .pat0: ((stack :: V -> V)<a>))
+         -> std/core/types/(,)<(std/core/types/maybe :: V -> V)<a>,(stack :: V -> V)<a>>((std/core/types/Just<a>(x)), xs);
+    });
+  };
+fun push // inline size: 1
+  = forall<a> fn(st: (stack :: V -> V)<a>, a: a){
+    stack/Top<a>(a, st);
+  };

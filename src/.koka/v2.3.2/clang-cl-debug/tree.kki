@@ -1,0 +1,79 @@
+module interface tree
+ 
+//------------------------------
+//#kki: import declarations
+ 
+private import std/core/types = std/core/types = "";
+private import std/core = std/core = "";
+ 
+//------------------------------
+//#kki: external imports
+ 
+ 
+//------------------------------
+//#kki: fixity declarations
+ 
+ 
+//------------------------------
+//#kki: local imported aliases
+ 
+ 
+//------------------------------
+//#kki: type declarations
+ 
+public recursive type tree <a> :: V -> V {
+  public con Leaf : forall<a> (tree :: V -> V)<a>;
+  public con Branch(value: a, branches: (std/core/list :: V -> V)<(tree :: V -> V)<a>>) : forall<a> (value : a, branches : (std/core/list :: V -> V)<(tree :: V -> V)<a>>) -> (tree :: V -> V)<a>;
+};
+ 
+//------------------------------
+//#kki: declarations
+ 
+// Automatically generated. Tests for the `Leaf` constructor of the `:tree` type.
+public fun is-leaf : forall<a> (^ tree : (tree :: V -> V)<a>) -> std/core/types/bool;
+// Automatically generated. Tests for the `Branch` constructor of the `:tree` type.
+public fun is-branch : forall<a> (^ tree : (tree :: V -> V)<a>) -> std/core/types/bool;
+public fun combine : forall<a> (tr1 : (tree :: V -> V)<a>, tr2 : (tree :: V -> V)<a>, a : a) -> (tree :: V -> V)<a>;
+public fun treemap : forall<a,b> (f : (a) -> b, tr : (tree :: V -> V)<a>) -> <(std/core/types/div :: E)> (tree :: V -> V)<b>;
+ 
+//------------------------------
+//#kki: external declarations
+ 
+ 
+//------------------------------
+//#kki: inline definitions
+ 
+//.inline-section
+inline fun is-leaf // inline size: 1
+  = forall<a> fn(tree: (tree :: V -> V)<a>){
+    (match (tree) {
+      ((tree/Leaf() : (tree :: V -> V)<a> ) as .pat: ((tree :: V -> V)<a>))
+         -> std/core/types/True;
+      (.pat0: ((tree :: V -> V)<a>))
+         -> std/core/types/False;
+    });
+  };
+inline fun is-branch // inline size: 1
+  = forall<a> fn(tree: (tree :: V -> V)<a>){
+    (match (tree) {
+      ((tree/Branch((.pat0: a) : a, (.pat1: (std/core/list :: V -> V)<(tree :: V -> V)<a>>) : (std/core/list :: V -> V)<(tree :: V -> V)<a>>) : (tree :: V -> V)<a> ) as .pat: ((tree :: V -> V)<a>))
+         -> std/core/types/True;
+      ((.skip tree/Leaf() : (tree :: V -> V)<a> ) as .pat2: ((tree :: V -> V)<a>))
+         -> std/core/types/False;
+    });
+  };
+fun combine // inline size: 3
+  = forall<a> fn(tr1: (tree :: V -> V)<a>, tr2: (tree :: V -> V)<a>, a: a){
+    tree/Branch<a>(a, (std/core/Cons<(tree :: V -> V)<a>>(tr1, (std/core/Cons<(tree :: V -> V)<a>>(tr2, (std/core/Nil<(tree :: V -> V)<a>>))))));
+  };
+recursive specialize "*_" fun treemap // inline size: 5
+  = forall<a,b> fn<<(std/core/types/div :: X)>>(f: (a) -> b, tr: (tree :: V -> V)<a>){
+    (match (tr) {
+      ((tree/Leaf() : (tree :: V -> V)<a> ) as .pat: ((tree :: V -> V)<a>))
+         -> tree/Leaf<b>;
+      ((.skip tree/Branch((value: a) : a, (branches: (std/core/list :: V -> V)<(tree :: V -> V)<a>>) : (std/core/list :: V -> V)<(tree :: V -> V)<a>>) : (tree :: V -> V)<a> ) as .pat0: ((tree :: V -> V)<a>))
+         -> tree/Branch<b>((f(value)), (std/core/map.5<(tree :: V -> V)<a>,(tree :: V -> V)<b>,<(std/core/types/div :: X)>>(branches, (fn<<(std/core/types/div :: X)>>(b: (tree :: V -> V)<a>){
+              (tree/treemap<a,b>(f, b));
+            }))));
+    });
+  };
